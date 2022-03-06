@@ -1,6 +1,6 @@
 /*!
- * perfect-scrollbar v1.5.3
- * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
+ * perfect-scrollbar v1.5.5
+ * Copyright 2022 Hyunje Jun, MDBootstrap and Contributors
  * Licensed under MIT
  */
 
@@ -104,10 +104,10 @@ try {
   var opts = Object.defineProperty({}, 'passive', {
     get: function() {
       supportsPassive = true;
-    }
+    },
   });
-  window.addEventListener("testPassive", null, opts);
-  window.removeEventListener("testPassive", null, opts);
+  window.addEventListener('testPassive', null, opts);
+  window.removeEventListener('testPassive', null, opts);
 } catch (e) {}
 
 var EventElement = function EventElement(element) {
@@ -122,7 +122,11 @@ EventElement.prototype.bind = function bind (eventName, handler) {
     this.handlers[eventName] = [];
   }
   this.handlers[eventName].push(handler);
-  this.element.addEventListener(eventName, handler, supportsPassive ? { passive: false } : false);
+  this.element.addEventListener(
+    eventName,
+    handler,
+    supportsPassive ? { passive: false } : false
+  );
 };
 
 EventElement.prototype.unbind = function unbind (eventName, target) {
@@ -132,7 +136,11 @@ EventElement.prototype.unbind = function unbind (eventName, target) {
     if (target && handler !== target) {
       return true;
     }
-    this$1.element.removeEventListener(eventName, handler, supportsPassive ? { passive: false } : false);
+    this$1.element.removeEventListener(
+      eventName,
+      handler,
+      supportsPassive ? { passive: false } : false
+    );
     return false;
   });
 };
